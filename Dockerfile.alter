@@ -1,0 +1,12 @@
+FROM python:3.8-buster
+
+RUN apt-get update && \
+    apt-get install -y python3-pip && \
+    pip3 install awslambdaric
+
+COPY app.py ./
+
+ENV AWS_LAMBDA_RUNTIME_API=
+
+ENTRYPOINT [ "/usr/local/bin/python", "-m", "awslambdaric" ]
+CMD ["app.handler"]
