@@ -1,14 +1,14 @@
-<p align="left">
+<p align="center">
   <a href="https://dev.to/vumdao">
     <img alt="Deploy Python Lambda functions with container images" src="https://dev-to-uploads.s3.amazonaws.com/i/1il5y8ycp87qqbh9118t.png" width="500" />
   </a>
 </p>
-<h1 align="left">
+<h1 align="center">
   Deploy Python Lambda functions with container images
 </h1>
 
 
-## **You can deploy your Lambda function code as a container image. AWS provides the following resources to help you build a container image for your Python function:**
+## You can deploy your Lambda function code as a container image. AWS provides the following resources to help you build a container image for your Python function:
 - AWS base images for Lambda
   - These base images are preloaded with a language runtime and other components that are required to run the image on Lambda. AWS provides a Dockerfile for each of the base images to help with building your container image.
 
@@ -16,9 +16,9 @@
   - If you use a community or private enterprise base image, add a runtime interface client to the base image to make it compatible with Lambda.
 
 
-### 🚀 **1. Create Docker image container**
-#### **1.1 Create an image from an alternative base image**
-[`Dockerfile.alter`]()
+### 🚀 **[Create Docker image container](#-Create-Docke-image-container)**
+#### **1. Create an image from an alternative base image**
+[`Dockerfile.alter`](https://github.com/vumdao/lambda-container-image/blob/master/Dockerfile.alter)
 ```
 FROM python:3.8-buster
 
@@ -32,8 +32,8 @@ ENTRYPOINT [ "/usr/local/bin/python", "-m", "awslambdaric" ]
 CMD ["app.handler"]
 ```
 
-#### **1.2 Create an image from AWS base image**
-[`Dockerfile.aws`]()
+#### **2. Create an image from AWS base image**
+[`Dockerfile.aws`](https://github.com/vumdao/lambda-container-image/blob/master/Dockerfile.aws)
 ```
 FROM amazon/aws-lambda-python:3.8
 
@@ -42,7 +42,7 @@ COPY app.py ./
 CMD ["app.handler"]
 ```
 
-### **2. Create `app.py` as lambda handler**
+### 🚀 **[Create `app.py` as lambda handler](#-Create-`app.py`-as-lambda-handler)**
 ```
 import sys
 
@@ -51,7 +51,7 @@ def handler(event, context):
     return 'Hello from AWS Lambda using Python' + sys.version + '!'
 ```
 
-### **3. Build and push the image to ECR**
+### 🚀 **[Build and push the image to ECR](#-Build0and-push-the-image-to-ECR)**
 ```
 aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 111111111111.dkr.ecr.ap-southeast-1.amazonaws.com
 docker build -t pythonlambda .
@@ -59,11 +59,11 @@ docker tag pythonlambda:latest 111111111111.dkr.ecr.ap-southeast-1.amazonaws.com
 docker push 111111111111.dkr.ecr.ap-southeast-1.amazonaws.com/pythonlambda:latest
 ```
 
-### **4. Create Lambda container image**
+### 🚀 **[Create Lambda container image](#-Create-Lambda-container-imager)**
 ![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/jjqxhyu3twzave259jim.png)
 
-### **5. Test the lambda function**
-#### **5.1 Invoke lambda function**
+### 🚀 **[Test the lambda function](#-Test-the-lambda-function)**
+#### **1. Invoke lambda function**
 - Start container
 ```
 docker rm -f lambdaimagetest
@@ -81,7 +81,7 @@ docker exec -it lambdaimagetest bash
 "Hello from AWS Lambda using Python3.8.5 (default, Aug  5 2020, 08:22:02) \n[GCC 8.3.0]!"
 ```
 
-#### **5.2 Call lambda API from local container**
+#### **2. Call lambda API from local container**
 - This should be performed from AWS image base
 - Run container
 ```
