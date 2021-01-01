@@ -3,6 +3,9 @@
     <img alt="Deploy Python Lambda functions with container images" src="https://dev-to-uploads.s3.amazonaws.com/i/1il5y8ycp87qqbh9118t.png" width="500" />
   </a>
 </p>
+<p align="center">
+  ⚛️ 📄 🚀
+</p>
 <h1 align="center">
   Deploy Python Lambda functions with container images
 </h1>
