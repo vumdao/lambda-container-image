@@ -7,13 +7,19 @@
   Deploy Python Lambda functions with container images
 </h1>
 
-
 ## You can deploy your Lambda function code as a container image. AWS provides the following resources to help you build a container image for your Python function:
 - AWS base images for Lambda
   - These base images are preloaded with a language runtime and other components that are required to run the image on Lambda. AWS provides a Dockerfile for each of the base images to help with building your container image.
 
 - Open-source runtime interface clients
   - If you use a community or private enterprise base image, add a runtime interface client to the base image to make it compatible with Lambda.
+
+## What’s In This Document 
+- [Create Docker image container](#-Create-Docke-image-container)
+- [Create `app.py` as lambda handler](#-Create-`app.py`-as-lambda-handler)
+- [Build and push the image to ECR](#-Build0and-push-the-image-to-ECR)
+- [Create Lambda container image](#-Create-Lambda-container-imager)
+- [Test the lambda function](#-Test-the-lambda-function)
 
 
 ### 🚀 **[Create Docker image container](#-Create-Docke-image-container)**
